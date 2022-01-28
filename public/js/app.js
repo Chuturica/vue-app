@@ -1,18 +1,17 @@
-Vue.prototype.$http = axios;
+const { default: axios } = require("axios");
 
 new Vue({
     el: '#app',
 
     data: {
-        skills: []
+        name: '',
+        description: '',
+
     },
 
-    mounted(){
-        // make an ajax request to our server - /skills
-
-        axios.get('/skills').then(response => console.log(response.data));
-        axios.get('/skills').then(response => this.skills =response.data);
-        this.$http.get('/skills').then(response => this.skills =response.data);
-        this.$http.get('/skills').then(response => console.log(response.data));
+    methods: {
+        onSubmit(){
+            axios.post('/projects', this.$data);
+        }
     }
 });

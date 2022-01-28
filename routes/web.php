@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('skills', function(){
     return ['Proradio','si','napokon','bravo','ti','ga'];
 });
+
+Route::get('/projects/create', 'ProjectsController@create');
+Route::post('projects', 'ProjectsController@store');
