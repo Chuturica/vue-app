@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('skills', function(){
-    return ['Zasto','neces','da','radis'];
+    return ['Proradio','si','napokon','bravo','ti','ga'];
 });
