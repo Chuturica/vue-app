@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('skills', function(){
-    return ['Proradio','si','napokon','bravo','ti','ga'];
+Route::get('skills', function () {
+    return ['Proradio', 'si', 'napokon', 'bravo', 'ti', 'ga'];
 });
 
-Route::get('/projects/create', 'ProjectsController@create');
-Route::post('projects', 'ProjectsController@store');
+
+Route::get('projects/create', [ProjectsController::class, 'create']);
+Route::post('projects', [ProjectsController::class, 'store']);
+
+// Route::get('projects/create', 'ProjectsController@create');
+// Route::post('projects', 'ProjectsController@store');

@@ -2,55 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProjectsRequest;
-use App\Http\Requests\UpdateProjectsRequest;
-use App\Models\Project;
+use App\Project;
 
 class ProjectsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Show the page to create a new project.
      */
     public function create()
     {
-        //
-        return view ('projects.create', [
+        return view('projects.create', [
             'projects' => Project::all()
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreProjectsRequest  $request
-     * @return \Illuminate\Http\Response
+     * Store a new project in the database.
      */
     public function store()
     {
-        //
-        $this->validate(request(),[
+        $this->validate(request(), [
             'name' => 'required',
-            'description' => 'required'
+            "description" => 'required'
         ]);
 
         Project::forceCreate([
             'name' => request('name'),
-            'desciprion' => request('descriprion')
+            'description' => request('description')
         ]);
 
         return ['message' => 'Project Created!'];
-
     }
 }
